@@ -34,24 +34,99 @@ const printBoard = () => {
 
 const horizontalWin = () => {
   // Your code here to check for horizontal wins
+  const xwins = (currentValue) => currentValue == 'X';
+  const owins = (currentValue) => currentValue == 'O';
+  if (board[0].every(xwins) || board[0].every(owins)) {
+    return true;
+  }
+  else if (board[1].every(xwins) || board[1].every(owins)) {
+    return true;
+  }
+  else if (board[2].every(xwins) || board[2].every(owins)) {
+    return true;
+  }
 }
 
 const verticalWin = () => {
   // Your code here to check for vertical wins
+  if ((board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') || (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O')) {
+    return true;
+  }
+  else if ((board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') || (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O')) {
+    return true;
+  }
+  else if ((board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') || (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')) {
+    return true;
+  }  
 }
 
 const diagonalWin = () => {
   // Your code here to check for diagonal wins
+  if ((board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') || (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O')) {
+    return true;
+}
+  else if ((board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X') || (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')) {
+    return true;
+  }
 }
 
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
+  if (diagonalWin()) {
+    return true;
+  }
+  else if (horizontalWin()) {
+    return true;
+  }
+  else if (verticalWin()) {
+    return true;
+  }
 }
 
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
+  if (row == '0' && column == '0') {
+    board[0].splice(0,1, playerTurn);
+  }
+  else if (row == '0' && column == '1'){
+    board[0].splice(1,1, playerTurn);
+  }
+  else if (row == '0' && column == '2'){
+    board[0].splice(2,1, playerTurn);
+  }
+  else if (row == '1' && column == '0'){
+    board[1].splice(0,1, playerTurn);
+  }
+  else if (row == '1' && column == '1'){
+    board[1].splice(1,1, playerTurn);
+  }
+  else if (row == '1' && column == '2'){
+    board[1].splice(2,1, playerTurn);
+  }
+  else if (row == '2' && column == '0'){
+    board[2].splice(0,1, playerTurn);
+  }
+  else if (row == '2' && column == '1'){
+    board[2].splice(1,1, playerTurn);
+  }
+  else if (row == '2' && column == '2'){
+    board[2].splice(2,1, playerTurn);
+  }
+   checkForWin();
+   changePlayerTurn();
   // then check for a win
 }
+
+const changePlayerTurn = () => {
+  if (playerTurn === 'X') {
+    playerTurn = 'O';
+  }else {
+    playerTurn = 'X';
+  }
+}
+
+
+
 
 const getPrompt = () => {
   printBoard();
