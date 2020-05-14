@@ -72,13 +72,31 @@ const diagonalWin = () => {
 
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
-  if (diagonalWin()) {
+  if (diagonalWin() === true) {
+    board = [
+      [' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']
+    ];
+    console.log(playerTurn + " wins!!");
     return true;
   }
-  else if (horizontalWin()) {
+  else if (horizontalWin() === true) {
+    board = [
+      [' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']
+    ];
+    console.log(playerTurn + " wins!!");
     return true;
   }
-  else if (verticalWin()) {
+  else if (verticalWin() === true) {
+    board = [
+      [' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']
+    ];
+    console.log(playerTurn + " wins!!");
     return true;
   }
 }
